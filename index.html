@@ -2,91 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="theme-color" content="#111111" />
   <title>Travel The Damn Universe</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Travel The Damn Universe</h1>
-    <div class="stats" aria-live="polite">
-      <span>Money: <b id="money">$0</b></span>
-      <span>Distance: <b id="distance">0 m</b></span>
-      <span>Speed: <b id="speedStat">1.00</b></span>
-      <span>World: <b id="worldStat">1</b></span>
-      <span>Rebirths: <b id="rebirthStat">0</b></span>
-    </div>
-  </header>
-
-  <main>
-    <section class="game-wrap">
-      <canvas id="game" width="960" height="540" aria-label="Travel The Damn Universe game"></canvas>
-      <div id="eventBanner" class="banner" hidden></div>
-      <div id="crushMessage" class="crush" hidden>
-        <h2>CRUSHED BY THE BIG ROCK</h2>
-        <p>Your run distance reset, but your upgrades and money stayed.</p>
-        <button id="continueBtn" type="button">Continue</button>
+  <main class="app-shell">
+    <header class="topbar">
+      <h1>Travel The Damn Universe</h1>
+      <div class="stats" aria-live="polite">
+        <span>$<b id="money">0</b></span><span><b id="distance">0 m</b></span>
+        <span>Speed <b id="speedStat">1.00</b></span><span>World <b id="worldStat">1</b></span>
+        <span>Rebirths <b id="rebirthStat">0</b></span><span>Kills <b id="killStat">0</b></span>
       </div>
-    </section>
+    </header>
 
-    <section class="controls">
-      <button id="upgradeSpeed" type="button">Upgrade Speed</button>
-      <button id="upgradeIncome" type="button">Upgrade Money/sec</button>
-      <button id="upgradeRock" type="button">Upgrade Rock Distance</button>
-      <button id="rebirthBtn" type="button">Rebirth</button>
-      <button id="shopBtn" type="button">Shop</button>
-      <button id="codesBtn" type="button">Codes</button>
-      <button id="leaderboardBtn" type="button">Leaderboard</button>
-      <button id="helpBtn" type="button">Help</button>
-    </section>
+    <section class="game-layout">
+      <div class="game-wrap">
+        <canvas id="game" width="960" height="540" aria-label="Travel The Damn Universe game"></canvas>
+        <div id="eventBanner" class="banner" hidden></div>
+        <div id="crushMessage" class="crush" hidden>
+          <h2>CRUSHED BY THE BIG ROCK</h2>
+          <p>Your run distance reset, but your upgrades and money stayed.</p>
+          <button id="continueBtn" type="button">Continue</button>
+        </div>
+        <button id="dashBtn" class="dash-btn" type="button">DASH</button>
+        <div class="mobile-pad" aria-label="Movement controls">
+          <button data-move="up" type="button">▲</button>
+          <div><button data-move="left" type="button">◀</button><button data-move="down" type="button">▼</button><button data-move="right" type="button">▶</button></div>
+        </div>
+      </div>
 
-    <p class="hint">The cube walks forever. Click or tap anywhere in the game to shoot toward that point.</p>
-
-    <section class="upgrade-info">
-      <p id="speedInfo"></p>
-      <p id="incomeInfo"></p>
-      <p id="rockInfo"></p>
-      <p id="rebirthInfo"></p>
-      <p id="boostInfo"></p>
+      <aside class="side-panel">
+        <section class="panel-block">
+          <h2>Upgrades</h2>
+          <button id="upgradeSpeed" type="button"></button>
+          <button id="upgradeIncome" type="button"></button>
+          <button id="upgradeRock" type="button"></button>
+          <button id="upgradeDamage" type="button"></button>
+          <button id="rebirthBtn" type="button"></button>
+        </section>
+        <section class="panel-block">
+          <h2>Gun</h2>
+          <select id="gunSelect" aria-label="Equipped gun"></select>
+          <p id="gunInfo"></p>
+        </section>
+        <section class="panel-block compact-actions">
+          <button id="shopBtn" type="button">Shop</button>
+          <button id="codesBtn" type="button">Codes</button>
+          <button id="leaderboardBtn" type="button">Leaderboard</button>
+          <button id="statsBtn" type="button">Stats</button>
+          <button id="helpBtn" type="button">Help</button>
+        </section>
+        <section class="panel-block status-box">
+          <p id="rockInfo"></p><p id="boostInfo"></p><p id="challengeInfo"></p>
+        </section>
+      </aside>
     </section>
   </main>
 
   <dialog id="shopDialog">
     <h2>Shop</h2>
-    <h3>Skins</h3>
-    <div id="skinList" class="grid-list"></div>
-    <h3>Temporary Boosts</h3>
-    <div id="boostList" class="grid-list"></div>
+    <div class="tabs"><button data-tab="guns">Guns</button><button data-tab="skins">Skins</button><button data-tab="boosts">Boosts</button><button data-tab="companions">Companions</button></div>
+    <div id="shopContent" class="grid-list"></div>
     <button data-close="shopDialog" type="button">Close</button>
   </dialog>
 
-  <dialog id="codesDialog">
-    <h2>Codes</h2>
-    <input id="codeInput" placeholder="Enter code" autocomplete="off" />
-    <button id="redeemCode" type="button">Redeem</button>
-    <p id="codeMessage"></p>
-    <button data-close="codesDialog" type="button">Close</button>
-  </dialog>
+  <dialog id="codesDialog"><h2>Codes</h2><input id="codeInput" placeholder="Enter code" autocomplete="off" /><button id="redeemCode" type="button">Redeem</button><p id="codeMessage"></p><button data-close="codesDialog" type="button">Close</button></dialog>
 
-  <dialog id="leaderboardDialog">
-    <h2>Leaderboard</h2>
-    <label>Player name <input id="playerName" maxlength="20" /></label>
-    <button id="submitScore" type="button">Submit Current Score</button>
-    <button id="refreshScores" type="button">Refresh</button>
-    <p id="leaderboardMessage"></p>
-    <ol id="leaderboardList"></ol>
-    <button data-close="leaderboardDialog" type="button">Close</button>
-  </dialog>
+  <dialog id="leaderboardDialog"><h2>Leaderboard</h2><label>Player name <input id="playerName" maxlength="20" /></label><button id="submitScore" type="button">Submit Current Score</button><button id="refreshScores" type="button">Refresh</button><p id="leaderboardMessage"></p><ol id="leaderboardList"></ol><button data-close="leaderboardDialog" type="button">Close</button></dialog>
 
-  <dialog id="helpDialog">
-    <h2>How to Play</h2>
-    <p>Your cube moves automatically. Zombies chase you, and shooting them gives bonus money.</p>
-    <p>The boulder catches you after your safe-distance meter runs out. Upgrade rock distance to make each run longer.</p>
-    <p>Rebirth after reaching the required distance. Each rebirth permanently adds 5% speed and increases the next distance requirement.</p>
-    <p>Worlds unlock automatically as your best distance increases.</p>
-    <button data-close="helpDialog" type="button">Close</button>
-  </dialog>
+  <dialog id="statsDialog"><h2>Stats & Collection</h2><div id="statsContent"></div><button data-close="statsDialog" type="button">Close</button></dialog>
+
+  <dialog id="helpDialog"><h2>How to Play</h2><p>The cube walks automatically. Use WASD, arrow keys, or the mobile pad for small movement adjustments. Click or tap the game to shoot.</p><p>The boulder appears after 30 seconds, starts far away, and follows your vertical movement so you cannot escape it by moving lanes.</p><p>Kill zombies, grab crates, buy guns, finish challenges, and rebirth for permanent speed.</p><button data-close="helpDialog" type="button">Close</button></dialog>
 
   <script src="game.js"></script>
 </body>
