@@ -1,82 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="theme-color" content="#111111" />
-  <title>Travel The Damn Universe</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <main class="app-shell">
-    <header class="topbar">
-      <h1>Travel The Damn Universe</h1>
-      <div class="stats" aria-live="polite">
-        <span>$<b id="money">0</b></span><span><b id="distance">0 m</b></span>
-        <span>Speed <b id="speedStat">1.00</b></span><span>World <b id="worldStat">1</b></span>
-        <span>Rebirths <b id="rebirthStat">0</b></span><span>Kills <b id="killStat">0</b></span>
-      </div>
-    </header>
-
-    <section class="game-layout">
-      <div class="game-wrap">
-        <canvas id="game" width="960" height="540" aria-label="Travel The Damn Universe game"></canvas>
-        <div id="eventBanner" class="banner" hidden></div>
-        <div id="crushMessage" class="crush" hidden>
-          <h2>CRUSHED BY THE BIG ROCK</h2>
-          <p>Your run distance reset, but your upgrades and money stayed.</p>
-          <button id="continueBtn" type="button">Continue</button>
-        </div>
-        <button id="dashBtn" class="dash-btn" type="button">DASH</button>
-        <div class="mobile-pad" aria-label="Movement controls">
-          <button data-move="up" type="button">▲</button>
-          <div><button data-move="left" type="button">◀</button><button data-move="down" type="button">▼</button><button data-move="right" type="button">▶</button></div>
-        </div>
-      </div>
-
-      <aside class="side-panel">
-        <section class="panel-block">
-          <h2>Upgrades</h2>
-          <button id="upgradeSpeed" type="button"></button>
-          <button id="upgradeIncome" type="button"></button>
-          <button id="upgradeRock" type="button"></button>
-          <button id="upgradeDamage" type="button"></button>
-          <button id="rebirthBtn" type="button"></button>
-        </section>
-        <section class="panel-block">
-          <h2>Gun</h2>
-          <select id="gunSelect" aria-label="Equipped gun"></select>
-          <p id="gunInfo"></p>
-        </section>
-        <section class="panel-block compact-actions">
-          <button id="shopBtn" type="button">Shop</button>
-          <button id="codesBtn" type="button">Codes</button>
-          <button id="leaderboardBtn" type="button">Leaderboard</button>
-          <button id="statsBtn" type="button">Stats</button>
-          <button id="helpBtn" type="button">Help</button>
-        </section>
-        <section class="panel-block status-box">
-          <p id="rockInfo"></p><p id="boostInfo"></p><p id="challengeInfo"></p>
-        </section>
-      </aside>
-    </section>
-  </main>
-
-  <dialog id="shopDialog">
-    <h2>Shop</h2>
-    <div class="tabs"><button data-tab="guns">Guns</button><button data-tab="skins">Skins</button><button data-tab="boosts">Boosts</button><button data-tab="companions">Companions</button></div>
-    <div id="shopContent" class="grid-list"></div>
-    <button data-close="shopDialog" type="button">Close</button>
-  </dialog>
-
-  <dialog id="codesDialog"><h2>Codes</h2><input id="codeInput" placeholder="Enter code" autocomplete="off" /><button id="redeemCode" type="button">Redeem</button><p id="codeMessage"></p><button data-close="codesDialog" type="button">Close</button></dialog>
-
-  <dialog id="leaderboardDialog"><h2>Leaderboard</h2><label>Player name <input id="playerName" maxlength="20" /></label><button id="submitScore" type="button">Submit Current Score</button><button id="refreshScores" type="button">Refresh</button><p id="leaderboardMessage"></p><ol id="leaderboardList"></ol><button data-close="leaderboardDialog" type="button">Close</button></dialog>
-
-  <dialog id="statsDialog"><h2>Stats & Collection</h2><div id="statsContent"></div><button data-close="statsDialog" type="button">Close</button></dialog>
-
-  <dialog id="helpDialog"><h2>How to Play</h2><p>The cube walks automatically. Use WASD, arrow keys, or the mobile pad for small movement adjustments. Click or tap the game to shoot.</p><p>The boulder appears after 30 seconds, starts far away, and follows your vertical movement so you cannot escape it by moving lanes.</p><p>Kill zombies, grab crates, buy guns, finish challenges, and rebirth for permanent speed.</p><button data-close="helpDialog" type="button">Close</button></dialog>
-
-  <script src="game.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>Travel The Damn Universe: Failed Experiment</title><link rel="stylesheet" href="style.css"></head><body>
+<main class="app-shell"><header class="topbar"><div><h1>Travel The Damn Universe</h1><small>Failed Experiment Update</small></div><div class="stats"><span>$<b id="money">0</b></span><span><b id="distance">0 m</b></span><span>Speed <b id="speedStat">1.00</b></span><span>World <b id="worldStat">1</b></span><span>Rebirths <b id="rebirthStat">0</b></span><span>Kills <b id="killStat">0</b></span></div></header>
+<section class="game-layout"><div class="game-wrap"><canvas id="game" width="960" height="540"></canvas><div id="eventBanner" class="banner" hidden></div><div id="toiletTimer" class="toilet-timer" hidden></div><div id="crushMessage" class="crush" hidden><h2 id="deathTitle">CRUSHED</h2><p id="deathText">Your run reset. Your cursed upgrades remain.</p><button id="continueBtn">Continue</button></div><button id="dashBtn" class="dash-btn">DASH</button><div class="mobile-pad"><button data-move="up">▲</button><div><button data-move="left">◀</button><button data-move="down">▼</button><button data-move="right">▶</button></div></div></div>
+<aside class="side-panel"><section class="panel-block"><h2>Upgrades</h2><button id="upgradeSpeed"></button><button id="upgradeIncome"></button><button id="upgradeRock"></button><button id="upgradeDamage"></button><button id="rebirthBtn"></button></section><section class="panel-block"><h2>Gun</h2><select id="gunSelect"></select><p id="gunInfo"></p></section><section class="panel-block compact-actions"><button id="shopBtn">Shop</button><button id="editorBtn">Cube Editor</button><button id="codesBtn">Codes</button><button id="leaderboardBtn">Leaderboard</button><button id="statsBtn">Stats</button><button id="helpBtn">Help</button></section><section class="panel-block status-box"><p id="rockInfo"></p><p id="boostInfo"></p><p id="challengeInfo"></p><p id="stabilityInfo"></p></section></aside></section></main>
+<dialog id="shopDialog"><h2>Shop</h2><div class="tabs"><button data-tab="guns">Guns</button><button data-tab="boosts">Boosts</button><button data-tab="companions">Companions</button></div><div id="shopContent" class="grid-list"></div><button data-close="shopDialog">Close</button></dialog>
+<dialog id="editorDialog"><h2>Cube Editor</h2><p>Every attachment gives stats and makes the experiment look less legal.</p><div class="editor-layout"><canvas id="editorCanvas" width="420" height="320"></canvas><div><div id="editorStats" class="editor-stats"></div><div class="tabs"><button data-editor="legs">Legs</button><button data-editor="arms">Arms</button><button data-editor="fungus">Cube Fungus</button><button data-editor="eyes">Eyes</button></div><div id="editorParts" class="grid-list"></div></div></div><button data-close="editorDialog">Close</button></dialog>
+<dialog id="codesDialog"><h2>Codes</h2><input id="codeInput" placeholder="Enter code"><button id="redeemCode">Redeem</button><p id="codeMessage"></p><button data-close="codesDialog">Close</button></dialog>
+<dialog id="leaderboardDialog"><h2>Leaderboard</h2><label>Player name <input id="playerName" maxlength="20"></label><button id="submitScore">Submit Current Score</button><button id="refreshScores">Refresh</button><p id="leaderboardMessage"></p><ol id="leaderboardList"></ol><button data-close="leaderboardDialog">Close</button></dialog>
+<dialog id="statsDialog"><h2>Stats & Collection</h2><div id="statsContent"></div><button data-close="statsDialog">Close</button></dialog>
+<dialog id="helpDialog"><h2>How to Play</h2><p>The cube walks automatically. Move slightly with WASD, arrows, or the mobile pad. Aim and shoot with the mouse or touch.</p><p>The boulder arrives after 30 seconds and follows your Y position. Enemies now attack from ahead, above, and below.</p><p>Every two minutes, rush to the toilet at the top before the timer ends. Rare trucks must be destroyed before they flatten you.</p><p>Buy limbs, eyes, fungus, guns, and companions. Looking cursed is now progression.</p><button data-close="helpDialog">Close</button></dialog>
+<script src="game.js"></script></body></html>
