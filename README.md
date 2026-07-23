@@ -1,20 +1,23 @@
-# Travel The Damn Universe — Failed Experiment Update
+# Travel The Damn Universe v3.1 - OST & Goblin Polish
 
-Open `index.html` in a browser or publish the folder with GitHub Pages.
+A cursed browser survival game about an increasingly illegal cube experiment, zombies, toilets, trucks, and one very determined boulder.
 
 ## Controls
-- WASD / Arrow keys: slight movement
+- WASD / Arrow keys: move freely
 - Mouse / touch: aim and shoot
-- Space / DASH button: dash
+- Space / Dash button: dash
+- Mobile: floating joystick + Shoot + Dash
 
-## Major additions
-- Cube Editor with legs, arms, cube fungus, and eyes
-- Mutation parts provide real stat bonuses
-- Ten guns including laser, rocket launcher, minigun, lightning gun, and cube cannon
-- Enemies attack from the right, top, and bottom
-- Splitter and shooter enemy types
-- Bathroom emergency every two minutes
-- Rare destroyable truck hazard
-- Animated legs and cursor-tracking weapon arm
-- Scenery and extra absurd events
-- Existing v1/v2 saves migrate into the v3 save format
+## Add your OST
+1. Put audio files in `Music/`.
+2. Add their exact filenames to `Music/playlist.json` in playback order.
+3. Supported file extensions: MP3, M4A, OGG, WAV, AAC, and FLAC where the browser supports them.
+4. The playlist loops. Players can change volume, shuffle, skip tracks, or choose a local folder from the Music menu.
+
+See `Music/README.txt` for an example playlist.
+
+## Leaderboard
+The game now reuses one saved leaderboard identity per browser/device and updates that name's best score instead of intentionally adding duplicates. Run `SUPABASE-LEADERBOARD-SETUP.sql` once in Supabase to clean old duplicates and enforce unique names at the database level.
+
+## Hosting
+The ZIP is ready for itch.io HTML5 hosting or GitHub Pages. `index.html` is at the ZIP root as required.
