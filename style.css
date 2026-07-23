@@ -1,0 +1,34 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #111; color: white; }
+header { padding: 12px; background: #222; border-bottom: 1px solid #555; }
+h1 { margin: 0 0 8px; font-size: 24px; }
+.stats { display: flex; flex-wrap: wrap; gap: 12px; }
+main { padding: 12px; }
+.game-wrap { position: relative; max-width: 1100px; margin: 0 auto; }
+canvas { display: block; width: 100%; height: auto; border: 2px solid #777; background: #87ceeb; touch-action: none; }
+.controls { max-width: 1100px; margin: 12px auto; display: flex; flex-wrap: wrap; gap: 8px; }
+button, input { font: inherit; }
+button { padding: 8px 12px; border: 1px solid #777; border-radius: 2px; background: #ddd; color: #111; cursor: pointer; }
+button:hover { background: #fff; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+.hint, .upgrade-info { max-width: 1100px; margin: 8px auto; }
+.upgrade-info { display: grid; gap: 4px; }
+.upgrade-info p { margin: 0; }
+.banner { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); background: #fff; color: #111; padding: 8px 16px; border: 2px solid #111; }
+.crush { position: absolute; inset: 20% 10%; background: #222; border: 2px solid white; padding: 20px; text-align: center; }
+dialog { width: min(680px, 94vw); max-height: 85vh; overflow: auto; border: 2px solid #777; background: #222; color: white; }
+dialog::backdrop { background: rgba(0,0,0,.7); }
+dialog input { width: 100%; padding: 8px; margin: 6px 0; }
+.grid-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; margin-bottom: 16px; }
+.shop-item { border: 1px solid #666; padding: 8px; background: #181818; }
+.shop-item button { width: 100%; }
+#leaderboardList { padding-left: 26px; }
+@media (max-width: 600px) {
+  h1 { font-size: 19px; }
+  .stats { font-size: 14px; }
+  .controls button { flex: 1 1 45%; }
+}
